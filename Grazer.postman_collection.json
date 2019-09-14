@@ -1,0 +1,57 @@
+{
+	"info": {
+		"_postman_id": "985eaf88-df57-4fbd-a252-ba293d3835c3",
+		"name": "Grazer",
+		"description": "Bitcoin XBT wallet service.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create wallet",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3003/wallets/new",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"wallets",
+						"new"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Send all BTC to address",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3003/wallets/92cdb58d13178ecc78485b80d21ffe1a2ac1ceab520685f48ea2ce89d1f85f77/send?to=3BPxdXXUVnpTxF4wky6HJc4PDn2cEEf9i2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"wallets",
+						"92cdb58d13178ecc78485b80d21ffe1a2ac1ceab520685f48ea2ce89d1f85f77",
+						"send"
+					],
+					"query": [
+						{
+							"key": "to",
+							"value": "3BPxdXXUVnpTxF4wky6HJc4PDn2cEEf9i2"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

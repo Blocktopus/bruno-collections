@@ -1,0 +1,40 @@
+{
+	"info": {
+		"_postman_id": "6ca9a14b-7101-44b0-86be-068c10297386",
+		"name": "Blocktopus AI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Wintermute - OCR",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id_url\": \"https://dev-s3-blocktopus.s3.eu-central-1.amazonaws.com/individual_kyc_review/id_image/106/IMG_7396.JPG\",\n\t\"first_name\": \"Panagiotis\",\n\t\"last_name\": \"Sakkos\",\n\t\"date_of_birth\": \"1989-11-24\",\n\t\"id_number\": \"AK2145331\"\n}"
+				},
+				"url": {
+					"raw": "{{BLOCKTOPUS_WINTERMUTE_ROOT}}/api/v0/wintermute/analyze",
+					"host": [
+						"{{BLOCKTOPUS_WINTERMUTE_ROOT}}"
+					],
+					"path": [
+						"api",
+						"v0",
+						"wintermute",
+						"analyze"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
