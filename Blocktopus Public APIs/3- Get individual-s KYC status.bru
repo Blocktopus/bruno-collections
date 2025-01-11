@@ -1,0 +1,31 @@
+meta {
+  name: 3- Get individual-s KYC status
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{BLOCKTOPUS_ROOT}}/api/v1/organizations/{{ORGANIZATION}}/individual_subject/{{INDIVIDUAL_ID}}/status
+  body: none
+  auth: none
+}
+
+headers {
+  X-BLOCKTOPUS-AUTH: {{ORG-AUTH}}
+}
+
+docs {
+  Postman variables:
+  
+    - {{ORG-AUTH}}: Should be set to the Organization's authentication key in order to be authenticated and authorized to access the Blocktopus REST APIs
+  
+  Gets the status of an individual user.
+  
+  Response body contains a status property with the following values that describe the status of the user's KYC:
+  
+    - docs_pending
+    - docs_submitted
+    - under_review
+    - declined
+    - approved
+}

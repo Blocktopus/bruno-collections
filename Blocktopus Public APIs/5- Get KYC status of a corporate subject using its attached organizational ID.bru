@@ -1,0 +1,15 @@
+meta {
+  name: 5- Get KYC status of a corporate subject using its attached organizational ID
+  type: http
+  seq: 10
+}
+
+get {
+  url: {{BLOCKTOPUS_ROOT}}/api/v1/organizations/{{ORGANIZATION}}/corporate_subject/organization_identifier/{{ORGANIZATIONAL_ID}}/status
+  body: none
+  auth: none
+}
+
+headers {
+  X-BLOCKTOPUS-AUTH: {{ORG-AUTH}}
+}

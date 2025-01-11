@@ -1,0 +1,72 @@
+meta {
+  name: 1- Create company entity in Blocktopus
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{BLOCKTOPUS_ROOT}}/api/v1/organizations/{{ORGANIZATION}}/corporate_subject
+  body: json
+  auth: none
+}
+
+headers {
+  X-BLOCKTOPUS-AUTH: {{ORG-AUTH}}
+  Content-Type: application/json
+}
+
+body:json {
+  {
+  	"administrator_first_name": "John",
+  	"administrator_last_name": "Smith",
+  	"name": "Contoso",
+  	"country_of_incorporation": "US",
+  	"address": "215 Roosevelt Ave, Carteret Apt. 777",
+  	"country_of_operation": "US",
+  	"city": "New York City",
+  	"state": "New York",
+  	"postcode": "NJ 07008",
+  	"registration_file": "contoso-registration.pdf",
+      "individual_parties": [
+      {
+          "first_name": "Alice",
+          "last_name": "Smith",
+          "nationality": "CA",
+          "residence": "US",
+          "gender": "Female",
+          "birthday": "2000-01-13"
+      }
+      ],
+      "entity_parties": [
+          {
+              "name": "Other Corp",
+              "country_of_incorporation": "US",
+              "country": "US"
+          },
+          {
+              "name": "Other Corp2",
+              "country_of_incorporation": "US",
+              "country": "US"
+          }
+      ]
+  }
+}
+
+docs {
+  Postman variables:
+  
+    - {{ORG-AUTH}}: Should be set to the Organization's authentication key in order to be authenticated and authorized to access the Blocktopus REST APIs
+  
+  CCreates a company entity in Blocktopus in order to be KYC'd. In the response body the created entity is returned, along with the pre-signed URL that REGISTRASTION document must be uploaded.
+  
+  Parameter notes:
+  
+    - nationality must be a ISO_3166-1 alpha2 code
+    - registration_file must contain the file name of the file that contains the company's registration document
+    
+  The response body contains the AWS S3 presigned URl that the client needs to upload the document to:
+  
+    - registration_file
+  
+  After creating the company, the company's registration file needs to be uploaded to the AWS S3 presigned URLs that the request body contains. Note that the time window that these two presigned URLs are valid is 900 seconds.
+}

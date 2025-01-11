@@ -1,0 +1,58 @@
+meta {
+  name: 1- Create new individual user in Blocktopus
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{BLOCKTOPUS_ROOT}}/api/v1/organizations/{{ORGANIZATION}}/individual_subject
+  body: json
+  auth: none
+}
+
+headers {
+  X-BLOCKTOPUS-AUTH: {{ORG-AUTH}}
+  Content-Type: application/json
+}
+
+body:json {
+  {
+  	"organization_identifier": "0x1cbe8052cdd0530fcd169c1263448a66acbf9ace",
+  	"email_address": "john@eqitii.com",
+  	"first_name": "John",
+  	"middle_name": "",
+  	"last_name": "Smith",
+  	"birthday": "2000-01-13",
+  	"id_number": "ID 12345",
+  	"id_scan_image_url": "example_id_scan.jpg",
+  	"id_back_scan_image_url": "example_id_back_scan.jpg",
+  	"id_proof_image_url": "example_proof_scan.jpg",
+  	"proof_of_address_image_url": "test.jpg",
+  	"nationality": "US",
+  	"address": "Sesame Street 24 ",
+  	"country": "US"
+  }
+}
+
+docs {
+  Postman variables:
+  
+    - {{ORG-AUTH}}: Should be set to the Organization's authentication key in order to be authenticated and authorized to access the Blocktopus REST APIs
+  
+  Creates a user in Blocktopus in order to be KYC'd. In the response body the created entity is returned, along with the pre-signed URLs that the images of the subject should be uploaded.
+  
+  Parameter notes:
+  
+    - organization_identifier is the ID that the Organization wants to use in order to identify the user resource in 
+    - date_of_birth must be in YYYY-MM-DD format (i.e.1989-11-24)
+    - nationality must be a ISO_3166-1 alpha2 code
+    - id_scan_image_url must contain the file name of the image that has the user's ID document
+    - id_proof_image_url must contain the file name of the image that contains the selfie of the user holding his ID document
+    
+  The response body contains the AWS S3 presigned URls that the client needs to upload the documents to:
+  
+    - id_scan_image_url
+    - id_proof_image_url
+    
+  After creating the user, the ID document scan and the proof of ID need to be uploaded to the AWS S3 presigned URLs that the request body contains. Note that the time window that these two presigned URLs are valid is 900 seconds.
+}

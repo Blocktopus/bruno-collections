@@ -1,0 +1,23 @@
+meta {
+  name: 4- Set Organization ID to a corporate subject
+  type: http
+  seq: 9
+}
+
+post {
+  url: {{BLOCKTOPUS_ROOT}}/api/v1/organizations/{{ORGANIZATION}}/corporate_subject/{{CORPORATE_ID}}/organization_identifier
+  body: json
+  auth: none
+}
+
+headers {
+  X-BLOCKTOPUS-AUTH: {{ORG-AUTH}}
+  Content-Type: application/json
+}
+
+body:json {
+  {
+  	"organization_identifier": "0x24be8052cdd0535fcd169c1263448a66acbf9ac3"
+  }
+  
+}

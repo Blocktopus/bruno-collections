@@ -1,0 +1,16 @@
+meta {
+  name: Send Ether in Ropsten
+  type: http
+  seq: 2
+}
+
+get {
+  url: http://localhost:3001/test/wallets/0x1d02757ce4b73a6edccf99e0ae3d1088eaba23ba159e775a65d47cd18556a736/send/eth?to=0x3c52896bdd11cb76356b38236978f572333cd188&amount=0.01
+  body: none
+  auth: none
+}
+
+params:query {
+  to: 0x3c52896bdd11cb76356b38236978f572333cd188
+  amount: 0.01
+}

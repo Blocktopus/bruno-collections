@@ -1,0 +1,24 @@
+meta {
+  name: 2- Submit review for individual subject
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{BLOCKTOPUS_ROOT}}/api/v1/organizations/{{ORGANIZATION}}/individual_subject/{{INDIVIDUAL_ID}}/review
+  body: none
+  auth: none
+}
+
+headers {
+  X-BLOCKTOPUS-AUTH: {{ORG-AUTH}}
+  Content-Type: application/json
+}
+
+docs {
+  Postman variables:
+  
+    - {{ORG-AUTH}}: Should be set to the Organization's authentication key in order to be authenticated and authorized to access the Blocktopus REST APIs
+  
+  After creating a user and uploading his documents to the S3 bucket, then the KYC review can be triggered by calling this API using the user's orgzanization identifier.
+}

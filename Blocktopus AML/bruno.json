@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "Blocktopus AML",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

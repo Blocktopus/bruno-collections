@@ -1,0 +1,17 @@
+meta {
+  name: Check individual
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{BLOCKTOPUS_ROOT}}/api/v1/individual?first_name=GUTIERREZ&middle_name=reyes&last_name=jose
+  body: none
+  auth: none
+}
+
+params:query {
+  first_name: GUTIERREZ
+  middle_name: reyes
+  last_name: jose
+}

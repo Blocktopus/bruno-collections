@@ -1,0 +1,15 @@
+meta {
+  name: 2- Submit company for KYC review
+  type: http
+  seq: 7
+}
+
+post {
+  url: {{BLOCKTOPUS_ROOT}}/api/v1/organizations/{{ORGANIZATION}}/corporate_subject/{{CORPORATE_ID}}/review
+  body: none
+  auth: none
+}
+
+headers {
+  X-BLOCKTOPUS-AUTH: {{ORG-AUTH}}
+}

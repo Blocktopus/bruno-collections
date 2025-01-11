@@ -1,0 +1,15 @@
+meta {
+  name: 5- Get user-s KYC status using the Organization Identifier as the identifier
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{BLOCKTOPUS_ROOT}}/api/v1/organizations/{{ORGANIZATION}}/individual_subject/organization_identifier/{{ORGANIZATION-IDENTIFIER}}/status
+  body: none
+  auth: none
+}
+
+headers {
+  X-BLOCKTOPUS-AUTH: {{ORG-AUTH}}
+}

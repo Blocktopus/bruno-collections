@@ -1,0 +1,25 @@
+meta {
+  name: Wintermute - OCR
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{BLOCKTOPUS_WINTERMUTE_ROOT}}/api/v0/wintermute/analyze
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+  	"id_url": "https://dev-s3-blocktopus.s3.eu-central-1.amazonaws.com/individual_kyc_review/id_image/106/IMG_7396.JPG",
+  	"first_name": "Panagiotis",
+  	"last_name": "Sakkos",
+  	"date_of_birth": "1989-11-24",
+  	"id_number": "AK2145331"
+  }
+}
